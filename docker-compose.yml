@@ -2,7 +2,7 @@ version: '3'
 
 x-base-config: &base-config
   build: .
-  image: chatwoot-enterprise:local
+  image: astraonline/astrachat:v4.16.0-0.0.2
   volumes:
     - chatwoot-storage:/app/storage
   environment:
