@@ -2,6 +2,7 @@ version: '3'
 
 x-base-config: &base-config
   build: .
+  image: chatwoot-enterprise:local
   volumes:
     - chatwoot-storage:/app/storage
   environment:
@@ -47,6 +48,7 @@ x-base-config: &base-config
     - SMTP_ENABLE_STARTTLS_AUTO=${SMTP_ENABLE_STARTTLS_AUTO}
     - SMTP_ENABLE_SSL_TLS=true
     - SMTP_OPENSSL_VERIFY_MODE=${SMTP_OPENSSL_VERIFY_MODE}
+
 services:
   chatwoot-rails:
     <<: *base-config
