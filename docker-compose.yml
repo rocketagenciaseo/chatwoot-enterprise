@@ -51,10 +51,8 @@ services:
   chatwoot-rails:
     <<: *base-config
     depends_on:
-      chatwoot-postgres:
-        condition: service_started
-      chatwoot-redis:
-        condition: service_started
+      - chatwoot-postgres
+      - chatwoot-redis
     entrypoint: docker/entrypoints/rails.sh
     command: ['bundle', 'exec', 'rails', 's', '-p', '3000', '-b', '0.0.0.0']
     restart: always
@@ -62,10 +60,8 @@ services:
   chatwoot-sidekiq:
     <<: *base-config
     depends_on:
-      chatwoot-postgres:
-        condition: service_started
-      chatwoot-redis:
-        condition: service_started
+      - chatwoot-postgres
+      - chatwoot-redis
     command: ['bundle', 'exec', 'sidekiq', '-C', 'config/sidekiq.yml']
     restart: always
 
